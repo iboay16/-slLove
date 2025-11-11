@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Isıl 💖</title>
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 100%;
+    background: radial-gradient(circle at center, #0b0014 0%, #1a001f 100%);
+    font-family: 'Poppins', sans-serif;
+  }
+
+  h1 {
+    position: absolute;
+    top: 35%;
+    width: 100%;
+    text-align: center;
+    font-size: 5rem;
+    color: #ffb6e6;
+    text-shadow:
+      0 0 15px #ff6fe1,
+      0 0 30px #ff3bd6,
+      0 0 60px #ff008c;
+    animation: glow 3s infinite alternate ease-in-out;
+  }
+
+  h2 {
+    position: absolute;
+    top: 55%;
+    width: 100%;
+    text-align: center;
+    font-size: 2rem;
+    color: #ffd6f0;
+    text-shadow: 0 0 10px #ff8bd1;
+    animation: fade 4s infinite alternate;
+  }
+
+  @keyframes glow {
+    from { text-shadow: 0 0 10px #ff5fc8, 0 0 20px #ff0099, 0 0 30px #ff00cc; }
+    to { text-shadow: 0 0 30px #ff99e6, 0 0 60px #ff33cc, 0 0 90px #ff00b3; }
+  }
+
+  @keyframes fade {
+    from { opacity: 0.7; }
+    to { opacity: 1; }
+  }
+
+  .heart {
+    position: absolute;
+    color: #ff69b4;
+    font-size: 24px;
+    user-select: none;
+    opacity: 0.9;
+    animation: floatUp 6s linear forwards;
+  }
+
+  @keyframes floatUp {
+    from { transform: translateY(0); opacity: 1; }
+    to { transform: translateY(-800px); opacity: 0; }
+  }
+</style>
+</head>
+<body>
+
+<h1>Isıl 💖</h1>
+<h2>Dünyanın En Güzel Kadını</h2>
+
+<script>
+  const hearts = ["❤", "💖", "💘", "💕", "💞", "💓"];
+
+  function spawnHeart() {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+    heart.style.left = Math.random() * window.innerWidth + "px";
+    heart.style.top = (window.innerHeight - 50) + "px";
+    heart.style.fontSize = (20 + Math.random() * 20) + "px";
+    heart.style.animationDuration = (4 + Math.random() * 2) + "s";
+    heart.style.filter = `hue-rotate(${Math.random() * 360}deg)`;
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 6000);
+  }
+
+  setInterval(spawnHeart, 150);
+</script>
+
+</body>
+</html>

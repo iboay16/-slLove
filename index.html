@@ -1,93 +1,113 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Isıl 💖</title>
-<style>
-  html, body {
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    height: 100%;
-    background: radial-gradient(circle at center, #0b0014 0%, #1a001f 100%);
-    font-family: 'Poppins', sans-serif;
-  }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Isıl ✨ Göz Alıcı Hediyen</title>
+    <style>
+        @keyframes pulse-glow {
+            0% { text-shadow: 0 0 10px #ff66cc, 0 0 20px #ff0099; }
+            50% { text-shadow: 0 0 30px #ff99e6, 0 0 60px #ff33cc; }
+            100% { text-shadow: 0 0 10px #ff66cc, 0 0 20px #ff0099; }
+        }
 
-  h1 {
-    position: absolute;
-    top: 35%;
-    width: 100%;
-    text-align: center;
-    font-size: 5rem;
-    color: #ffb6e6;
-    text-shadow:
-      0 0 15px #ff6fe1,
-      0 0 30px #ff3bd6,
-      0 0 60px #ff008c;
-    animation: glow 3s infinite alternate ease-in-out;
-  }
+        @keyframes bg-shift {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
 
-  h2 {
-    position: absolute;
-    top: 55%;
-    width: 100%;
-    text-align: center;
-    font-size: 2rem;
-    color: #ffd6f0;
-    text-shadow: 0 0 10px #ff8bd1;
-    animation: fade 4s infinite alternate;
-  }
+        html, body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            height: 100%;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(-45deg, #0b0014, #1a001f, #2c003d, #4d0066);
+            background-size: 400% 400%;
+            animation: bg-shift 15s ease infinite alternate;
+        }
 
-  @keyframes glow {
-    from { text-shadow: 0 0 10px #ff5fc8, 0 0 20px #ff0099, 0 0 30px #ff00cc; }
-    to { text-shadow: 0 0 30px #ff99e6, 0 0 60px #ff33cc, 0 0 90px #ff00b3; }
-  }
+        #container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
 
-  @keyframes fade {
-    from { opacity: 0.7; }
-    to { opacity: 1; }
-  }
+        h1 {
+            font-size: 6rem;
+            color: #fff;
+            margin: 0;
+            font-weight: 800;
+            text-transform: uppercase;
+            animation: pulse-glow 3s infinite ease-in-out;
+            color: #ffb6e6;
+            letter-spacing: 5px;
+        }
 
-  .heart {
-    position: absolute;
-    color: #ff69b4;
-    font-size: 24px;
-    user-select: none;
-    opacity: 0.9;
-    animation: floatUp 6s linear forwards;
-  }
+        h2 {
+            font-size: 2.5rem;
+            color: #fff0f5;
+            margin-top: 10px;
+            font-style: italic;
+            opacity: 0.9;
+            text-shadow: 0 0 15px #ff69b4;
+        }
 
-  @keyframes floatUp {
-    from { transform: translateY(0); opacity: 1; }
-    to { transform: translateY(-800px); opacity: 0; }
-  }
-</style>
+        .heart {
+            position: absolute;
+            color: #ff69b4; /* Pembe kalp rengi */
+            font-size: 20px;
+            animation: floatAndRotate 8s linear infinite;
+            opacity: 0.9;
+            filter: drop-shadow(0 0 5px #fff); /* Işıltı efekti */
+        }
+
+        @keyframes floatAndRotate {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-1000px) rotate(360deg); opacity: 0; }
+        }
+    </style>
 </head>
 <body>
+    <div id="container">
+        <h1>Isıl</h1>
+        <h2>Dünyanın En Güzel Kadını 💖</h2>
+    </div>
 
-<h1>Isıl 💖</h1>
-<h2>Dünyanın En Güzel Kadını</h2>
+    <script>
+        const hearts = ["❤", "💖", "💘", "💕", "💞", "💓", "✨"];
+        const numHearts = 30;
 
-<script>
-  const hearts = ["❤", "💖", "💘", "💕", "💞", "💓"];
+        function spawnHeart() {
+            const heart = document.createElement("div");
+            heart.className = "heart";
+            heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+            
+            // Rastgele başlangıç yeri (ekranın altı)
+            heart.style.left = Math.random() * window.innerWidth + "px";
+            heart.style.top = (window.innerHeight + 50) + "px";
+            
+            // Rastgele boyut ve hız
+            const size = (20 + Math.random() * 20);
+            heart.style.fontSize = size + "px";
+            heart.style.animationDuration = (8 + Math.random() * 5) + "s";
+            
+            // Hafif yana süzülme için rastgele X ofseti
+            heart.style.animationName = "floatAndRotate";
+            
+            document.body.appendChild(heart);
 
-  function spawnHeart() {
-    const heart = document.createElement("div");
-    heart.className = "heart";
-    heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
-    heart.style.left = Math.random() * window.innerWidth + "px";
-    heart.style.top = (window.innerHeight - 50) + "px";
-    heart.style.fontSize = (20 + Math.random() * 20) + "px";
-    heart.style.animationDuration = (4 + Math.random() * 2) + "s";
-    heart.style.filter = `hue-rotate(${Math.random() * 360}deg)`;
-    document.body.appendChild(heart);
+            // 15 saniye sonra kalbi sil
+            setTimeout(() => heart.remove(), 15000);
+        }
 
-    setTimeout(() => heart.remove(), 6000);
-  }
-
-  setInterval(spawnHeart, 150);
-</script>
-
+        // Kalp yağmurunu başlat
+        for (let i = 0; i < numHearts; i++) {
+            setTimeout(spawnHeart, Math.random() * 3000);
+        }
+        setInterval(spawnHeart, 300); // Sürekli yeni kalp üret
+    </script>
 </body>
 </html>
